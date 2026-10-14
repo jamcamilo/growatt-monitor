@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: growatt-monitor
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /status
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: GROWATT_TOKEN
+        sync: false
+      - key: WHATSAPP_TO
+        sync: false
+      - key: CALLMEBOT_APIKEY
+        sync: false
+      - key: CRON_KEY
+        generateValue: true
+      - key: REPORT_TIME
+        value: "19:00"
+      - key: PLANT_KWP
+        value: "27.26"
